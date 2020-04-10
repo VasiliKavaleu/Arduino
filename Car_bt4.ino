@@ -12,12 +12,12 @@
   int vSpeed=255;     // Стандартная скорость может принимать значение от 0-255
 
 void setup() {
-    // Давайте определим наши контакты
+    // Определение  контактов
     pinMode(motorA1B, OUTPUT);
     pinMode(motorA1A, OUTPUT);
     pinMode(motorB1A, OUTPUT);
     pinMode(motorB1B, OUTPUT);    
-    // Давайте откроем последовательный порт со скоростью 9600
+    // Открытие последовательного порта со скоростью 9600
     Serial.begin(9600);
 }
  
@@ -43,56 +43,54 @@ void loop() {
     else if (state == '4'){
       vSpeed=255;}
      
-  /***********************İleri****************************/
   //Если входящие данные "F" автомобиль идет вперед.
     if (state == 'F') {
       analogWrite(motorA1B, 0); analogWrite(motorA1A, 255);
         analogWrite(motorB1A, 255); analogWrite(motorB1B, 255); 
     }
-  /**********************İleri Sol************************/
+  
   //Автомобиль идет вперед влево(по диагонали), если входящие данные " G.
     else if (state == 'G') {
       analogWrite(motorA1B, 0); analogWrite(motorA1A, 255);  
         analogWrite(motorB1A, 0);    analogWrite(motorB1B, 255); 
     }
-  /**********************İleri Sağ************************/
+  
   //Если входящие данные' I ' автомобиль идет вперед вправо(по диагонали).
     else if (state == 'I') {
         analogWrite(motorA1B, 0); analogWrite(motorA1A, 255); 
         analogWrite(motorB1A, 255);      analogWrite(motorB1B, 0); 
     }
-  /***********************Geri****************************/
+  
   //Автомобиль возвращается, если входящие данные " B.
     else if (state == 'B') {
       analogWrite(motorA1B, 255);   analogWrite(motorA1A, 0); 
         analogWrite(motorB1A, 255);   analogWrite(motorB1B, 255); 
     }
-  /**********************Geri Sol************************/
+  
   //Если данные из ' H ' автомобиль возвращается влево(по диагонали) 
     else if (state == 'H') {
       analogWrite(motorA1B, 255);   analogWrite(motorA1A, 0); 
         analogWrite(motorB1A, 0); analogWrite(motorB1B, 255); 
     }
-  /**********************Geri Sağ************************/
+ 
   //Если входящие данные 'J' автомобиль возвращается вправо(по диагонали)
     else if (state == 'J') {
       analogWrite(motorA1B, 255);   analogWrite(motorA1A, 0); 
         analogWrite(motorB1A, 255);   analogWrite(motorB1B, 0); 
     }
-  /***************************Sol*****************************/
+  
   //Если входящие данные 'L' автомобиль идет влево.
     else if (state == 'L') {
       analogWrite(motorA1B, 255);   analogWrite(motorA1A, 255); 
         analogWrite(motorB1A, 0); analogWrite(motorB1B, 255); 
     }
-  /***************************Sağ*****************************/
+ 
   //Если входящие данные 'R' автомобиль идет вправо
     else if (state == 'R') {
       analogWrite(motorA1B, 255);   analogWrite(motorA1A, 255); 
         analogWrite(motorB1A, 255);   analogWrite(motorB1B, 0);     
     }
   
-  /************************Stop*****************************/
   //Остановить автомобиль, если входящие данные' s.
     else if (state == 'S'){
         analogWrite(motorA1B, 255);  analogWrite(motorA1A, 255); 
